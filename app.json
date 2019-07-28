@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "BookIndia",
+    "slug": "bookindia",
+    "privacy": "public",
+    "sdkVersion": "33.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/logo_without_name.png",
+    "splash": {
+      "image": "./assets/images/logo_without_name.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "./assets/animations/*",
+      "./assets/images/*",
+      "./assets/fonts/*",
+      "./assets/icons/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.bookindia"
+    },
+    "web": {
+      "build": {
+        "babel": {
+          "include": [
+            "native-base-shoutem-theme"
+          ]
+        }
+      }
+    },
+    "description": "BookIndia App"
+  }
+}

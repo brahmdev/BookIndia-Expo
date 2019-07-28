@@ -1,0 +1,62 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "test": "jest --watchAll"
+  },
+  "jest": {
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|native-base-shoutem-theme|@shoutem/animation|@shoutem/ui|tcomb-form-native)"
+    ],
+    "setupFiles": [
+      "./test/setup.js"
+    ]
+  },
+  "dependencies": {
+    "@expo/samples": "~3.0.0",
+    "@expo/vector-icons": "^10.0.1",
+    "base-64": "^0.1.0",
+    "expo": "^33.0.0",
+    "expo-asset": "^5.0.0",
+    "expo-constants": "^5.0.0",
+    "expo-font": "^5.0.0",
+    "expo-image-picker": "^5.0.2",
+    "expo-web-browser": "^5.0.0",
+    "http-proxy-middleware": "0.19.1",
+    "lodash": "^4.17.11",
+    "native-base": "^2.12.1",
+    "prop-types": "^15.7.2",
+    "react": "16.8.3",
+    "react-dom": "^16.8.6",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "react-native-chart-kit": "^3.1.0",
+    "react-native-extended-stylesheet": "^0.11.1",
+    "react-native-flexi-radio-button": "^0.2.2",
+    "react-native-globalize": "^3.0.0",
+    "react-native-i18n": "^2.0.15",
+    "react-native-js-stepper": "^0.2.1",
+    "react-native-modal": "^11.1.0",
+    "react-native-progress-steps": "^1.2.7",
+    "react-native-responsive-screen": "^1.2.0",
+    "react-native-signature-canvas": "^1.4.2",
+    "react-native-svg": "^9.5.1",
+    "react-native-web": "^0.11.4",
+    "react-navigation": "^3.11.0",
+    "react-redux": "^6.0.0",
+    "react-test-renderer": "^16.8.2",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.3",
+    "redux-persist": "^5.10.0"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.1.0",
+    "jest-expo": "^33.0.0"
+  },
+  "private": true
+}

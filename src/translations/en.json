@@ -1,0 +1,370 @@
+{
+  "app": {
+    "attention": "Attention",
+    "success": "Success",
+    "deleteMessage": "Are you sure?",
+    "deleteSuccessMessage": "The book has been deleted.",
+    "deleteFailureMessage": "The book could not be deleted.",
+    "ok": "Ok",
+    "yes": "Yes",
+    "cancel": "Cancel",
+    "done": "Done",
+    "formatter": {
+      "numberSeparator": ".",
+      "numberDelimiter": ",",
+      "unit": "INR "
+    },
+    "permissions": {
+      "titleFailure": "No Permission",
+      "cameraGalleryFailureMessage": "The app requires to access camera and gallery for uploading images."
+    },
+    "home": "Home"
+  },
+  "gallery": {
+    "title": "Gallery"
+  },
+  "launch": {
+    "loading": "Loading..."
+  },
+  "login": {
+    "title": "Login",
+    "welcome": "Welcome to BookIndia",
+    "button": "Connect with Google",
+    "enter": {
+      "message": "Could not log in. Try again later."
+    }
+  },
+  "book": {
+    "title": "Add Book",
+    "form": {
+      "book_name": "Book Name",
+      "price": "Price",
+      "author": "Author",
+      "language": "Language",
+      "category": "Category",
+      "type": "Type",
+      "description": "Description",
+      "languageDD": [
+        {
+          "id": "hindi",
+          "label": "Hindi"
+        },
+        {
+          "id": "English",
+          "label": "English"
+        }
+      ],
+      "typeDD": [
+        {
+          "id": "New",
+          "label": "New"
+        },
+        {
+          "id": "Re-Sale",
+          "label": "Re-Sale"
+        }
+      ],
+      "sectionDD": [
+        {
+          "id": "EDUCATIONAL",
+          "label": "EDUCATIONAL"
+        },
+        {
+          "id": "ART",
+          "label": "ART"
+        },
+        {
+          "id": "RELIGION",
+          "label": "RELIGION"
+        },
+        {
+          "id": "NOVEL",
+          "label": "NOVEL"
+        }
+      ],
+      "save": "Save",
+      "delete": "Delete",
+      "addToCart": "Add to Cart"
+    },
+    "save": {
+      "successMessage": "The item has been saved.",
+      "failureMessage": "The item could not be saved."
+    },
+    "addPhoto": {
+      "option": "Select an option:",
+      "photoLibrary": "Photo Library",
+      "takePicture": "Take Picture"
+    }
+  },
+  "bookItem": {
+    "language": "Language",
+    "type": "Type"
+  },
+  "books": {
+    "title": "Products",
+    "noContent": "No books have been added yet.",
+    "logout": {
+      "title": "Exit",
+      "message": "Do you really want to exit?"
+    }
+  },
+  "booksCategory": {
+    "bookType": "Book Type",
+    "title": "My Books"
+  },
+  "bag": {
+    "title": "Add Bag",
+    "form": {
+      "bag_name": "Bag Name",
+      "price": "Price",
+      "material": "Material",
+      "length": "L",
+      "width": "W",
+      "height": "H",
+      "category": "Category",
+      "color": "Color",
+      "description": "Description",
+      "sectionDD": [
+        {
+          "id": "SCHOOL",
+          "label": "SCHOOL"
+        },
+        {
+          "id": "BAGPACK",
+          "label": "BAGPACK"
+        },
+        {
+          "id": "LAPTOP",
+          "label": "LAPTOP"
+        }
+      ],
+      "save": "Save",
+      "delete": "Delete",
+      "addToCart": "Add to Cart"
+    },
+    "save": {
+      "successMessage": "The item has been saved.",
+      "failureMessage": "The item could not be saved."
+    },
+    "addPhoto": {
+      "option": "Select an option:",
+      "photoLibrary": "Photo Library",
+      "takePicture": "Take Picture"
+    }
+  },
+  "bagItem": {
+    "material": "Material",
+    "color": "Color"
+  },
+  "bags": {
+    "title": "Products",
+    "noContent": "No bags have been added yet.",
+    "logout": {
+      "title": "Exit",
+      "message": "Do you really want to exit?"
+    }
+  },
+  "bagsCategory": {
+    "bagType": "Bag Type",
+    "title": "My bags"
+  },
+  "cloth": {
+    "title": "Add Cloth",
+    "form": {
+      "cloth_name": "Cloth Name",
+      "price": "Price",
+      "material": "Material",
+      "size": "Size",
+      "type": "Type",
+      "category": "Category",
+      "color": "Color",
+      "description": "Description",
+      "sizeDD": [
+        {
+          "id": "XS - Extra Small",
+          "label": "XS - Extra Small"
+        },
+        {
+          "id": "S - Small",
+          "label": "S - Small"
+        },
+        {
+          "id": "M - Medium",
+          "label": "M - Medium"
+        },
+        {
+          "id": "L - Large",
+          "label": "L - Large"
+        },
+        {
+          "id": "XL - Extra Large",
+          "label": "XL - Extra Large"
+        }
+      ],
+      "typeDD": [
+        {
+          "id": "FORMAL",
+          "label": "FORMAL"
+        },
+        {
+          "id": "CASUAL",
+          "label": "CASUAL"
+        }
+      ],
+      "sectionDD": [
+        {
+          "id": "MEN",
+          "label": "MEN"
+        },
+        {
+          "id": "WOMEN",
+          "label": "WOMEN"
+        },
+        {
+          "id": "KIDS",
+          "label": "KIDS"
+        }
+      ],
+      "save": "Save",
+      "delete": "Delete",
+      "addToCart": "Add to Cart"
+    },
+    "save": {
+      "successMessage": "The item has been saved.",
+      "failureMessage": "The item could not be saved."
+    },
+    "addPhoto": {
+      "option": "Select an option:",
+      "photoLibrary": "Photo Library",
+      "takePicture": "Take Picture"
+    }
+  },
+  "clothItem": {
+    "material": "Material",
+    "color": "Color"
+  },
+  "clothes": {
+    "title": "Products",
+    "noContent": "No clothes have been added yet.",
+    "logout": {
+      "title": "Exit",
+      "message": "Do you really want to exit?"
+    }
+  },
+  "clothesCategory": {
+    "clothType": "Cloth Type",
+    "title": "My clothes"
+  },
+  "sideMenu": {
+    "menuItems": [
+      {
+        "id": 1,
+        "title": "Books",
+        "icon": "ios-book-outline",
+        "subMenu": [
+          {
+            "id": "bk1",
+            "title": "EDUCATIONAL",
+            "icon": "ios-school"
+          },
+          {
+            "id": "bk2",
+            "title": "ART",
+            "icon": "ios-images"
+          },
+          {
+            "id": "bk3",
+            "title": "RELIGION",
+            "icon": "ios-man"
+          },
+          {
+            "id": "bk4",
+            "title": "NOVEL",
+            "icon": "ios-book"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Bags",
+        "icon": "ios-briefcase-outline",
+        "subMenu": [
+          {
+            "id": "bg1",
+            "title": "SCHOOL",
+            "icon": "ios-briefcase-outline"
+          },
+          {
+            "id": "bg2",
+            "title": "BAGPACK",
+            "icon": "ios-laptop-outline"
+          },
+          {
+            "id": "bg3",
+            "title": "LAPTOP",
+            "icon": "ios-camera-outline"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Clothes",
+        "icon": "ios-shirt-outline",
+        "subMenu": [
+          {
+            "id": "cl1",
+            "title": "MEN",
+            "icon": "ios-man-outline"
+          },
+          {
+            "id": "cl2",
+            "title": "WOMEN",
+            "icon": "ios-women-outline"
+          },
+          {
+            "id": "cl3",
+            "title": "KIDS",
+            "icon": "ios-happy-outline"
+          }
+        ]
+      }
+    ]
+  },
+  "profile": {
+    "title": "Profile",
+    "username": "Username",
+    "email": "Email",
+    "phoneNumber": "Phone Number",
+    "address": "Address",
+    "city": "City",
+    "zipCode": "Zip Code"
+  },
+  "notifications": {
+    "title": "Notifications"
+  },
+  "feedback": {
+    "title": "Feedback",
+    "message": "Message",
+    "subject": "Subject",
+    "send": "Send"
+  },
+  "visitors": {
+    "title": "Visitors"
+  },
+  "orders": {
+    "title": "Orders",
+    "details": {
+      "title": "Order Details",
+      "orderStatus": "Order Status"
+    }
+  },
+  "category": {
+    "title": "Category"
+  },
+  "help": {
+    "title": "Help"
+  },
+  "offers": {
+    "title": "Offer Zone"
+  }
+}
