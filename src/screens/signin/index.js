@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Image, Text} from 'react-native';
-import {login, clearErrorMessage} from '../../actions/userActions';
+import {loginWithToken, updateLoggedInUserData, clearErrorMessage} from '../../actions/userActions';
 import {Loading} from '../../components/Loading';
 import {
   View,
@@ -12,7 +12,7 @@ import {Google} from 'expo';
 import {GoogleLoginButton} from '../../components/GoogleLoginButton';
 import colors from '../../utils/Colors';
 import NavigationService from "../../navigation/Navigation-Service";
-
+import LoadingView from '../../components/Loading';
 import imgAppIcon from '../../../assets/images/logo_without_name.png';
 import imgGoogleIcon from '../../../assets/images/google-icon.png'
 
@@ -40,8 +40,6 @@ class SignInScreen extends Component {
     };
   }
 
-  textInput = '';
-
   static getDerivedStateFromProps(props, state) {
     if (props.loginErrorMessage !== '') {
       Toast.show({
@@ -56,32 +54,12 @@ class SignInScreen extends Component {
     if (!props.isRequesting) {
       props.clearErrorMessage();
     }
-    if (props.isLoggedIn) {
-      props.navigation.navigate('App');
+    console.log('in receive props ', props.appToken, ' logged in ', props.isLoggedIn);
+    if (props.isLoggedIn && props.appToken !== '') {
+      props.navigation.navigate('Main');
     }
     return true;
   }
-
-  login() {
-    let {username, password} = this.state;
-    let {navigation, login, isLoggedIn} = this.props;
-    if (!this.isDataValid(this.state)) {
-      this.setState({isRequesting: false}, () => {
-        return;
-      });
-      Toast.show({
-        text: "Enter Valid Username & password!",
-        duration: 2500,
-        position: "bottom",
-        type: 'danger',
-        buttonText: 'Dismiss',
-        textStyle: {textAlign: "center"}
-      });
-    } else {
-      login(username, password);
-    }
-  }
-
 
   signIn = async () => {
     try {
@@ -90,7 +68,9 @@ class SignInScreen extends Component {
 
       if (result.type === "success") {
         console.log(result);
-        NavigationService.navigate("Main");
+        this.props.loginWithToken(result.idToken);
+        result.isLoggedIn = true;
+        this.props.updateLoggedInUserData(result);
       } else {
         console.log("cancelled")
       }
@@ -129,7 +109,6 @@ class SignInScreen extends Component {
     if (this.props.isRequesting) {
       return this.renderLoading();
     }
-
     return this.renderWelcome();
   }
 }
@@ -138,14 +117,14 @@ SignInScreen.navigationOptions = () => ({
   header: null,
 });
 
-
 function mapStateToProps(state) {
-  const {isLoggedIn, authorities, loginError, isRequesting, loginErrorMessage} = state.user;
-  return {isLoggedIn, authorities, loginError, isRequesting, loginErrorMessage};
+  const {isLoggedIn, appToken, authorities, loginError, isRequesting, loginErrorMessage} = state.user;
+  return {isLoggedIn, appToken, authorities, loginError, isRequesting, loginErrorMessage};
 }
 
 const mapDispatchToProps = {
-  login,
+  loginWithToken,
+  updateLoggedInUserData,
   clearErrorMessage
 };
 

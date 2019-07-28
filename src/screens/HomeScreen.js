@@ -1,112 +1,88 @@
-import * as WebBrowser from 'expo-web-browser';
-import React from 'react';
+import React, {Component} from 'react';
 import {
-  Image,
   Platform,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  Button
 } from 'react-native';
+import { updateLoggedInUserData } from '../actions/userActions';
+import {connect} from 'react-redux';
+import { Google } from 'expo';
+import {Toast} from "native-base";
 
-
-HomeScreen.navigationOptions = {
-  header: null,
+const config = {
+  androidClientId: "831107695187-hbkqprc3m3qgvml43435va3r3k7o41c4.apps.googleusercontent.com",
+  androidStandaloneAppClientId: "831107695187-s45j5bt1i1gnep17s6li6mqeri5uoiqn.apps.googleusercontent.com",
+  //iosClientId: YOUR_CLIENT_ID_HERE,  <-- if you use iOS
+  scopes: ["profile", "email"],
+  redirectUrl: `com.bookindia:/oauth2redirect/google` // this is the LINE
 };
+class HomeScreen extends Component {
 
-export default function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../../assets/images/robot-dev.png')
-                : require('../../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
+  static getDerivedStateFromProps(props, state) {
+    console.log('in receive props HomeScreen ', props.appToken, ' logged in ', props.isLoggedIn);
+    if (props.isLoggedIn === undefined && props.appToken === undefined) {
+      props.navigation.navigate('SignIn');
+    }
+    return true;
+  }
 
-          <Text style={styles.getStartedText}>Get started by opening</Text>
+  signOut = async () => {
+    const { accessToken } = this.props;
+    console.log('accessTOken  ', accessToken);
+    const logoutResult = await Google.logOutAsync({ accessToken, ...config });
+    console.log('logoutResult ', logoutResult)
+    if (logoutResult.ok) {
+     const user= {
+        name: '',
+        firstname: '',
+        email: '',
+        lastname: ''
+      };
+     const data = {
+       user,
+       appToken: '',
+       isLoggedIn: false
+     };
+     this.props.updateLoggedInUserData(data);
+    }
+  };
 
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <Text>screens/HomeScreen.js</Text>
+  render() {
+    return (
+      <View style={styles.container}>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}>
+          <View style={styles.welcomeContainer}>
+
+            <Text>Hello {this.props.name} !</Text>
           </View>
-
-          <Text style={styles.getStartedText}>
-            Change this text and your app will automatically reload.
-          </Text>
-        </View>
-
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
-
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <Text style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </Text>
-        </View>
+          <Button title="Sign out" onPress={() => this.signOut()}/>
+        </ScrollView>
       </View>
-    </View>
-  );
-}
-
-
-function DevelopmentModeNotice() {
-  if (__DEV__) {
-    const learnMoreButton = (
-      <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-        Learn more
-      </Text>
-    );
-
-    return (
-      <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use
-        useful development tools. {learnMoreButton}
-      </Text>
-    );
-  } else {
-    return (
-      <Text style={styles.developmentModeText}>
-        You are not in development mode: your app will run at full speed.
-      </Text>
     );
   }
 }
 
-function handleLearnMorePress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/development-mode/'
-  );
+function mapStateToProps(state) {
+  const {isLoggedIn, appToken, accessToken, firstname, lastname, name, email, photoUrl, loginError, isRequesting, loginErrorMessage} = state.user;
+  return {isLoggedIn, appToken, accessToken, firstname, lastname, name, email, photoUrl, loginError, isRequesting, loginErrorMessage};
 }
 
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/up-and-running/#cant-see-your-changes'
-  );
-}
+const mapDispatchToProps = {
+  updateLoggedInUserData
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
 
 const styles = StyleSheet.create({
   container: {
@@ -164,7 +140,7 @@ const styles = StyleSheet.create({
     ...Platform.select({
       ios: {
         shadowColor: 'black',
-        shadowOffset: { width: 0, height: -3 },
+        shadowOffset: {width: 0, height: -3},
         shadowOpacity: 0.1,
         shadowRadius: 3,
       },

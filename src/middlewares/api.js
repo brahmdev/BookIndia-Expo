@@ -31,20 +31,23 @@ export default (store) => (next) => (action) => {
 };
 
 async function makeRequest(store, action, next) {
-  const API_BASE_PATH = '/api/v1';
+  const API_BASE_PATH = '/api/';
   const {
     callAPI: {apiPathWithParam, options, payload}
   } = action;
 
 
-  const url = SERVER_BASE_PATH + API_BASE_PATH + apiPathWithParam;
+  let url = SERVER_BASE_PATH + API_BASE_PATH + apiPathWithParam;
   const headers = new Headers();
 
   if (action.type === userActionTypes.API_USER_LOGIN) {
     headers.append('Authorization', 'Basic ' + base64.encode(payload.username + ':' + payload.password));
+  } else if (action.type === userActionTypes.API_USER_TOKEN_LOGIN) {
+    url = SERVER_BASE_PATH + "/login";
+    headers.append('X-ID-TOKEN', payload.token);
   } else {
-    const authString = payload.authString;
-    headers.append('Authorization', 'Basic ' + authString);
+    const appToken = payload.appToken;
+    headers.append('Authorization', appToken);
   }
 
   console.log('headers are ', headers, ' and url is: ', url, ' with action type: ', action.type);
@@ -59,7 +62,7 @@ async function makeRequest(store, action, next) {
 
   response.text = await response.text();
   if (response.ok) {
-    notifyReducersWithSuccess(action, next, response.text);
+    notifyReducersWithSuccess(action, next, response.text, response.headers);
     executeNextSuccessHandlers(action, store, response.text);
   } else {
     notifyReducersWithFailure(action, next, response);

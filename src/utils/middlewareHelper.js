@@ -1,11 +1,12 @@
 import { apiExecutionState } from "../actions/actionTypes";
 
 
-export function notifyReducersWithSuccess(action, next, text) {
+export function notifyReducersWithSuccess(action, next, text, headers) {
   next(
     actionWith(action, {
       type: action.type + apiExecutionState.FINISHED,
       response: text,
+      headers,
       payload: action.callAPI.payload,
       data: action.data
     })

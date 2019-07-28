@@ -1,4 +1,4 @@
-import { userActionTypes, CALL_API } from './actionTypes';
+import { userActionTypes, CALL_API, UPDATE_STORE } from './actionTypes';
 
 export function login(username, password) {
   return {
@@ -14,6 +14,30 @@ export function login(username, password) {
         password
       }
     }
+  };
+}
+
+export function loginWithToken(token) {
+  return {
+    type: userActionTypes.API_USER_TOKEN_LOGIN,
+    apiType: CALL_API,
+    callAPI: {
+      apiPathWithParam: `/login`,
+      options: {
+        method: 'POST'
+      },
+      payload: {
+        token
+      }
+    }
+  };
+}
+
+export function updateLoggedInUserData(user) {
+  return {
+    type: userActionTypes.STORE_UPDATE_LOGGED_IN_USER,
+    apiType: UPDATE_STORE,
+    data: user
   };
 }
 
